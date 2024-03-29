@@ -1,0 +1,30 @@
+GET http://localhost:5208/games
+
+###
+GET http://localhost:5208/games/2
+
+###
+POST http://localhost:5208/games
+Content-Type: application/json
+
+{
+  "name": "Street Fighter 3 turbo",
+  "genreId": 1,
+  "price": 39.99,
+  "releaseDate": "2000-07-15"
+}
+
+###
+PUT http://localhost:5208/games/2
+Content-Type: application/json
+
+{
+
+  "name": "Street Fighter 3 turbo",
+  "genreId": 1,
+  "price": 29.99,
+  "releaseDate": "2015-02-15"
+}
+
+###
+DELETE http://localhost:5208/games/2
