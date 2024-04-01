@@ -17,7 +17,7 @@ public class GamesClient
         },
         new()
         {
-            Id = 1,
+            Id = 2,
             Name = "Final Fantasy XIV",
             Genre = "Roleplaying",
             Price = 59.99M,
@@ -26,7 +26,7 @@ public class GamesClient
         },
         new()
         {
-            Id = 1,
+            Id = 3,
             Name = "FIFA 23",
             Genre = "Sports",
             Price = 19.99M,
@@ -37,4 +37,23 @@ public class GamesClient
 
     public GameSummary[] GetGames() => [.. games];
 
+
+    private readonly Genre[] genres = new GenreClient().GetGenres();
+
+    public void AddGame(GameDetails gameDetails)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(gameDetails.GenreId);
+        var genre = genres.Single(genre => genre.Id == int.Parse(gameDetails.GenreId));
+
+        var gameSummary = new GameSummary()
+        {
+            Id = games.Count + 1,
+            Name = gameDetails.Name,
+            Genre = genre.Name,
+            Price = gameDetails.Price,
+            ReleaseDate = gameDetails.ReleaseDate
+        };
+        
+        games.Add(gameSummary);
+    }
 }

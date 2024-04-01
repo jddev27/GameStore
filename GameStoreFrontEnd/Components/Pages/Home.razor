@@ -1,12 +1,16 @@
 ﻿@page "/"
-@using Models
-@using GameStoreFrontEnd.Clients
 
 <PageTitle>Game Catalog</PageTitle>
 
+<div class="mt-2">
+    <a role="button" class="btn btn-primary" href="/editgame">New Game</a>
+</div>
+
 @if (games is null)
 {
-    <p><em>Loading .....</em></p>
+    <p>
+        <em>Loading .....</em>
+    </p>
 }
 else
 {
@@ -38,7 +42,7 @@ else
 
 @code
 {
-    private GamesClient client = new ();
+    private GamesClient client = new();
 
     private GameSummary[]? games;
 
