@@ -2,7 +2,7 @@ using GameStoreFrontEnd.Models;
 
 namespace GameStoreFrontEnd.Clients;
 
-public class GamesClient
+public class GamesClient(HttpClient httpClient)
 {
     private readonly List<GameSummary> games =
     [
@@ -32,10 +32,12 @@ public class GamesClient
         }
     ];
 
-    public GameSummary[] GetGames() => [.. games];
+    public async Task<GameSummary[]> GetGamesAsync()
+        => await httpClient.GetFromJsonAsync<GameSummary[]>("games") ?? [];
+       
 
 
-    private readonly Genre[] genres = new GenreClient().GetGenres();
+    private readonly Genre[] genres = new GenreClient(httpClient).GetGenres();
 
     public void AddGame(GameDetails gameDetails)
     {
