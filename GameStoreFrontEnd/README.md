@@ -5,13 +5,13 @@ This is a Blazor WebAssembly application that serves as the front-end for a game
 ## Features
 
 - **View Game Catalog**: The home page (`/`) displays a table with all the games in the catalog, showing their ID, name, genre, price, and release date.
-- **Create New Game**: Users can navigate to the `/editgame` page to create a new game.
+- **Create New Game**: Users can create a new game clicking on the new game button.
 - **Edit Game**: Each game in the catalog has an "Edit" button that takes the user to the `/editgame/{id}` page, allowing them to edit the game's details.
 - **Delete Game**: Each game in the catalog has a "Delete" button that opens a modal asking for confirmation before deleting the game.
 
 ## Components
 
-### `Pages/Index.razor`
+### `Pages/Home.razor`
 
 This component displays the game catalog table and handles the initial data fetching.
 
@@ -31,7 +31,7 @@ This class is a client for interacting with the game-related API endpoints. It p
 
 This class is a client for fetching the list of available genres from the API.
 
-### `Models/GameSummary.cs` and `Models/GameDetails.cs`
+### `Models/GameSummary.cs`, `Models/GameDetails.cs` and `Models/Genre.cs`
 
 These classes represent the data models for game summaries and game details, respectively.
 
